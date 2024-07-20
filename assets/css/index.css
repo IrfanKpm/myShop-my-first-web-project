@@ -1,0 +1,9 @@
+.card{
+    margin-top: 7px;
+    margin-right: 10px;
+}
+.bold-link {
+    font-weight: bold;
+    color: black !important;
+}
+

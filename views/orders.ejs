@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .orders-container {
+      margin-top: 50px;
+    }
+    .orders-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+    <%- include('./layouts/_userHeader') %>
+  <div class="container orders-container">
+    <h2 class="orders-header">My Orders</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Date</th>
+          <th>To</th>
+          <th>Pincode</th>
+          <th>Amount</th>
+          <th>Payment</th>
+          <th>Status</th>
+          <th>View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (orders.length === 0) { %>
+          <tr>
+            <td colspan="8" class="text-center">No orders found.</td>
+          </tr>
+        <% } else { %>
+          <% orders.forEach((order, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= new Date(order.createdAt).toLocaleDateString() %></td>
+              <td><%= order.deliveryDetails.name %></td>
+              <td><%= order.deliveryDetails.pincode %></td>
+              <td>₹<%= order.totalAmount %></td>
+              <td><%= order.paymentMethod %></td>
+              <td><%= order.status %></td>
+              <td><a class="btn btn-primary" href="/orders/view/<%= order._id %>">View</a></td>
+            </tr>
+          <% }) %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

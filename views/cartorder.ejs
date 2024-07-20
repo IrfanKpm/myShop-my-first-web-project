@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Order</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .order-container {
+      background-color: #d5d6d7; /* Background color */
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+    }
+    .order-header {
+      text-align: center;
+    }
+    .btn-nav {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <%- include('./layouts/_userHeader') %>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 order-container">
+        <h2 class="order-header">Place Your Order</h2>
+        <form action="/cart/order" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="pincode">Pincode</label>
+            <input type="text" class="form-control" id="pincode" name="pincode" required>
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile</label>
+            <input type="tel" class="form-control" id="mobile" name="mobile" required>
+          </div>
+          <div class="form-group">
+            <label for="paymentMethod">Payment Method</label>
+            <select class="form-control" id="paymentMethod" name="paymentMethod" required>
+              <option value="cash">Cash on Delivery</option>
+              <option value="online">Online Payment</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+          <a href="/" class="btn btn-secondary btn-block btn-nav">Home</a> <!-- Navigation button to home page -->
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

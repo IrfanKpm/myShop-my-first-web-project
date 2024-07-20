@@ -1,0 +1,37 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #FFA500;">
+        <a class="navbar-brand mr-auto" href="#" style="color: black;">myShop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" style="color: black; margin-right: 10px;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/orders" style="color: black; margin-right: 10px;">Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart" style="color: black; margin-right: 10px;">Cart</a>
+                </li>
+                <% if (user) { %>
+                    <!-- Display logged username with special styling -->
+                    <li class="nav-item">
+                        <span class="nav-link" style="color: black; margin-right: 10px; font-weight: bold;">@<%= user.username %></span>
+                    </li>
+                    <!-- Logout option with special styling -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout" style="color: black; margin-right: 10px; font-weight: bold;">Logout</a>
+                    </li>
+                <% } else { %>
+                    <!-- Login option -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login" style="color: black; margin-right: 10px;font-weight: bold;">Login</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+</header>

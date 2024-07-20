@@ -1,0 +1,30 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #FFA500;">
+        <a class="navbar-brand mr-auto" href="#" style="color: black;">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentAdmin" aria-controls="navbarSupportedContentAdmin" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContentAdmin">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link bold-link" href="/admin/allusers" style="margin-right: 10px;">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bold-link" href="/admin/" style="margin-right: 10px;">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bold-link" href="/admin/feedbacks" style="margin-right: 10px;">Feedback</a>
+                </li>
+                <!-- Display logged username with special styling -->
+                <li class="nav-item">
+                    <span class="nav-link" style="color: black; margin-right: 10px; font-weight: bold;">@<%= username %></span>
+                </li>
+                <!-- Logout option with special styling -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/logout" style="color: black; margin-right: 10px; font-weight: bold;">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

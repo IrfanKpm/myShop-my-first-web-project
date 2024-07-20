@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .table img {
+            width: 80px; /* Adjust the width as needed */
+            height: auto;
+            object-fit: cover; /* Ensures images fit well within the cell */
+        }
+        .table td, .table th {
+            vertical-align: middle; /* Center-align content vertically */
+            text-align: center; /* Center-align text horizontally */
+        }
+        .table th, .table td {
+            padding: 0.75rem; /* Adjust padding to fit content better */
+        }
+    </style>
+</head>
+<body>
+    <!-- Include user header -->
+    <%- include('./layouts/_userHeader') %>
+
+    <div class="container">
+        <h1 class="my-4">Order Details</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Order ID: <%= order._id %></h5>
+                <p class="card-text"><strong>Date:</strong> <%= new Date(order.createdAt).toLocaleDateString() %></p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="card-title">Delivery Details</h4>
+            </div>
+            <div class="card-body">
+                <p><strong>Name:</strong> <%= order.deliveryDetails.name %></p>
+                <p><strong>Address:</strong> <%= order.deliveryDetails.address %></p>
+                <p><strong>Pincode:</strong> <%= order.deliveryDetails.pincode %></p>
+                <p><strong>Mobile:</strong> <%= order.deliveryDetails.mobile %></p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="card-title">Products</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% order.products.forEach((item, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= item.product.name %></td>
+                                <td><%= item.quantity %></td>
+                                <td>$<%= item.product.price %></td>
+                                <td><img src="<%= item.product.image %>" alt="<%= item.product.name %>" class="img-fluid"></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="card-title">Order Summary</h4>
+            </div>
+            <div class="card-body">
+                <p><strong>Total Amount:</strong> $<%= order.totalAmount %></p>
+                <p><strong>Payment Method:</strong> <%= order.paymentMethod %></p>
+                <p><strong>Status:</strong> <%= order.status %></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>myShop</title>
+  <link rel="stylesheet" href="/css/index.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+    <!-- User header -->
+    <%- include('./layouts/_userHeader') %>
+    <!-- /User header -->
+    <!-- Products section -->
+    <div class="container">
+        <div class="row">
+            <% products.forEach(product => { %>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card h-100">
+                        <img src="<%= product.image %>" class="card-img-top" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= product.name %></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">₹<%= product.price %></h6>
+                            <p class="card-text"><%= product.description %></p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/addcart/<%= product._id %>" class="btn btn-primary">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+  
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
